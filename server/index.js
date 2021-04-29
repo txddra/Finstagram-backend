@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-require('dotenv').config();
+// require('dotenv').config();
 
 import postRoutes from './routes/posts.js'
 
@@ -18,7 +18,7 @@ app.use(cors());
 // every route in route inside of 'postRoutes' will start with 'posts' 
 app.use('/posts', postRoutes)
 //mongodb connection
-const CONNECTION_URL = 'mongodb+srv://jsnewbie:yNsNMfcHVBme1cld@cluster0.t8bwv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const CONNECTION_URL = process.env.MONGODB_URI
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL,{useNewUrlParser: true, useUnifiedTopology:true})
